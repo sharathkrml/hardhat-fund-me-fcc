@@ -4,8 +4,13 @@ pragma solidity ^0.8.7;
 import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
 import "./PriceConverter.sol";
 
-error NotOwner();
+error FundMe__NotOwner();
 
+/** @title A contract for crowd funding
+ *   @author Sharath
+ *   @notice This contract is to demo a sample funding contract
+ *  @dev THis implememts Pricefees as our library
+ */
 contract FundMe {
     using PriceConverter for uint256;
     mapping(address => uint256) public addressToAmountFunded;
@@ -33,7 +38,7 @@ contract FundMe {
 
     modifier onlyOwner() {
         // require(msg.sender == owner);
-        if (msg.sender != iOwner) revert NotOwner();
+        if (msg.sender != iOwner) revert FundMe__NotOwner();
         _;
     }
 

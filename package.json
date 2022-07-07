@@ -25,6 +25,10 @@
         "solidity-coverage": "^0.7.21"
     },
     "scripts": {
-        "test": "yarn hardhat test"
+        "test": "yarn hardhat test",
+        "test:staging": "yarn hardhat test --network rinkeby",
+        "format": "yarn prettier --write .",
+        "lint": "yarn solhint 'contracts/*.sol'",
+        "lint:fix": "yarn solhint 'contracts/*.sol' --fix"
     }
 }
